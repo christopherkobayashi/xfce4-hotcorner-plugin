@@ -16458,7 +16458,7 @@ printf %s "checking PLATFORM_LDFLAGS... " >&6; }
 printf "%s\n" "$PLATFORM_LDFLAGS" >&6; }
 
 
-ac_config_files="$ac_config_files Makefile src/Makefile po/Makefile"
+ac_config_files="$ac_config_files Makefile src/Makefile po/Makefile.in"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -17479,7 +17479,7 @@ do
     "default-1") CONFIG_COMMANDS="$CONFIG_COMMANDS default-1" ;;
     "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;
     "src/Makefile") CONFIG_FILES="$CONFIG_FILES src/Makefile" ;;
-    "po/Makefile") CONFIG_FILES="$CONFIG_FILES po/Makefile" ;;
+    "po/Makefile.in") CONFIG_FILES="$CONFIG_FILES po/Makefile.in" ;;
     "po/stamp-it") CONFIG_COMMANDS="$CONFIG_COMMANDS po/stamp-it" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
