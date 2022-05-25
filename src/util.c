@@ -70,7 +70,7 @@ void start_screensaver(int spot __attribute__((unused)),
 		       HotCorner * hotCorner __attribute__((unused)))
 {
 	NotifyNotification *notif;
-	int ret = system("xscreensaver-command -activate");
+	int ret = system("xset s activate");
 
 	if (ret) {
 		notify_init("hotcorner-notify");
