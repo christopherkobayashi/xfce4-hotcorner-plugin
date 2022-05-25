@@ -9,7 +9,7 @@ This functionality was used historically by AfterDark (and workalikes) to invoke
 The HotCorner panel plugin supports the following operations on the primary display:
 
 - [xfdashboard](https://docs.xfce.org/apps/xfdashboard/start)
-- toggle desktop view (via libwnck)
+- toggle desktop view (via [libwnck](https://gitlab.gnome.org/GNOME/libwnck))
 - start screensaver (via "xset s activate")
 - turn off monitor (via "xset dpms force off")
 - run a custom command
@@ -31,8 +31,8 @@ make && make install
 ```
 
 ## Credits
-xfce4-hotcorner-plugin was originally written by Brian Hsu <brianhsu.hsu@gmail.com>
-It is currently maintained by Christopher Kobayashi <software+github@disavowed.jp>
+xfce4-hotcorner-plugin was originally written by Brian Hsu (<brianhsu.hsu@gmail.com>)
+It is currently maintained by Christopher Kobayashi (<software+github@disavowed.jp>)
 
 ## License
 
