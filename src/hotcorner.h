@@ -28,21 +28,17 @@
 #define HOTCORNER_ICON_NAME "org.xfce.settings.display"
 
 typedef struct HotCorner HotCorner;
-typedef void (* ActionCallback)(int spot, HotCorner * hotCorner);
+typedef void (* ActionCallback)(int, HotCorner *);
+
+extern void run_command(const gchar *);
 
 struct HotCorner {
-
   XfcePanelPlugin * plugin;
-
   guint timeout_id;
   guint ticket;
-
   gboolean isExecuted;
-
   GtkWidget * icon;
-
   GdkRectangle monitorInfo;
-
   ActionCallback upperLeftCallback;
   ActionCallback lowerLeftCallback;
   ActionCallback upperRightCallback;

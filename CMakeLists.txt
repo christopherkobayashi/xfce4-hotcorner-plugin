@@ -8,7 +8,7 @@ FIND_PACKAGE(PkgConfig REQUIRED)
 FIND_PACKAGE(Gettext REQUIRED)
 include(GNUInstallDirs)
 
-PKG_CHECK_MODULES(GTK REQUIRED libxfce4panel-2.0 libxfce4ui-2 libwnck-3.0)
+PKG_CHECK_MODULES(GTK REQUIRED libxfce4panel-2.0 libxfce4ui-2 libwnck-3.0 libnotify)
 
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
@@ -31,5 +31,5 @@ TARGET_LINK_LIBRARIES(hotcorner ${GTK_LIBRARIES})
 
 INSTALL(TARGETS hotcorner  LIBRARY DESTINATION lib/xfce4/panel/plugins/)
 INSTALL(FILES hotcorner.desktop DESTINATION share/xfce4/panel/plugins/)
-GETTEXT_CREATE_TRANSLATIONS(po/xfce4-hotcorner-plugin.pot ALL po/zh_TW.po)
+GETTEXT_CREATE_TRANSLATIONS(po/xfce4-hotcorner-plugin.pot ALL po/zh_TW.po po/gl.po)
 

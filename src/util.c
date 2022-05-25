@@ -16,6 +16,8 @@
  * Boston, MA 02110-1301, USA.
  */
 
+#include<libnotify/notify.h>
+
 #include <libwnck/libwnck.h>
 #include "util.h"
 
@@ -54,29 +56,58 @@ void toggle_desktop(int spot __attribute__((unused)),
 void turn_off_monitor(int spot __attribute__((unused)),
 		      HotCorner * hotCorner __attribute__((unused)))
 {
+	NotifyNotification *notif;
 	int ret = system("xset dpms force off");
 
-	if (ret < 0) {
-		/* send error notification here */
+	if (ret) {
+		notify_init("hotcorner-notify");
+		notif = notify_notification_new("HotCorner", "Could not turn off monitor", NULL);
+		notify_notification_show(notif, NULL);
 	}
 }
 
 void start_screensaver(int spot __attribute__((unused)),
 		       HotCorner * hotCorner __attribute__((unused)))
 {
+	NotifyNotification *notif;
 	int ret = system("xscreensaver-command -activate");
 
-	if (ret < 0) {
-		/* send error notification here */
+	if (ret) {
+		notify_init("hotcorner-notify");
+		notif = notify_notification_new("HotCorner", "Could not activate xscreensaver", NULL);
+		notify_notification_show(notif, NULL);
 	}
 }
 
 void start_dashboard(int spot __attribute__((unused)),
 		     HotCorner * hotCorner __attribute__((unused)))
 {
+	NotifyNotification *notif;
+
 	int ret = system("xfdashboard");
 
-	if (ret < 0) {
-		/* send error notification here */
+	if (ret) {
+		notify_init("hotcorner-notify");
+		notif = notify_notification_new("HotCorner", "Could not start xfdashboard", NULL);
+		notify_notification_show(notif, NULL);
 	}
 }
+
+void run_command(const gchar * command)
+{
+	NotifyNotification *notif;
+	gchar *value = g_strstrip(g_strdup(command));
+	int ret;
+
+	if (strlen(value) > 0) {
+		ret = system(value);
+		if (ret) {
+			notify_init("hotcorner-notify");
+			notif = notify_notification_new("HotCorner", "Could not start command", NULL);
+			notify_notification_show(notif, NULL);
+		}
+	}
+
+	g_free(value);
+}
+

@@ -25,22 +25,6 @@
 #define LOWER_LEFT  2
 #define LOWER_RIGHT 3
 
-void run_command(const gchar * command)
-{
-	gchar *value = g_strstrip(g_strdup(command));
-	int ret;
-
-	if (strlen(value) > 0) {
-		ret = system(value);
-		if (ret < 0) {
-			/* send error notification here */
-		}
-	}
-
-	g_free(value);
-
-}
-
 void run_custom_command(int spot, HotCorner * hotCorner)
 {
 
