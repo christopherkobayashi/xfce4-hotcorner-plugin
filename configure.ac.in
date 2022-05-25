@@ -1,0 +1,79 @@
+XDT_VERSION_INIT([0.0.4])
+AC_INIT([xfce4-hotcorner-plugin], [xdt_version()])
+AC_PREREQ([2.50])
+AC_CANONICAL_TARGET()
+AC_CONFIG_MACRO_DIR([m4])
+
+dnl ***************************
+dnl *** Initialize automake ***
+dnl ***************************
+AM_INIT_AUTOMAKE([1.8 dist-bzip2 tar-ustar foreign])
+AM_CONFIG_HEADER([config.h])
+AM_MAINTAINER_MODE()
+m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
+
+dnl ********************************
+dnl *** Check for basic programs ***
+dnl ********************************
+AC_PROG_CC()
+AC_PROG_CC_C99()
+AC_PROG_LD()
+AC_PROG_INSTALL()
+LT_PREREQ([2.2.6])
+LT_INIT([disable-static])
+IT_PROG_INTLTOOL([0.35.0])
+
+AC_CHECK_LIB([m], [exp])
+
+dnl **********************************
+dnl *** Check for standard headers ***
+dnl **********************************
+dnl AC_CHECK_HEADERS([])
+
+dnl ************************************
+dnl *** Check for standard functions ***
+dnl ************************************
+dnl AC_CHECK_FUNCS([])
+
+dnl ******************************
+dnl *** Check for i18n support ***
+dnl ******************************
+XDT_I18N([@LINGUAS@])
+
+dnl *******************************
+dnl *** Check for X11 installed ***
+dnl *******************************
+XDT_CHECK_LIBX11_REQUIRE()
+
+dnl ***********************************
+dnl *** Check for required packages ***
+dnl ***********************************
+XDT_CHECK_PACKAGE([GTK], [gtk+-3.0], [3.22.0])
+XDT_CHECK_PACKAGE([LIBXFCE4UI], [libxfce4ui-2], [4.12.0])
+XDT_CHECK_PACKAGE([LIBXFCE4PANEL], [libxfce4panel-2.0], [4.12.0])
+XDT_CHECK_PACKAGE([LIBWNCK], [libwnck-3.0], [3.0.0])
+XDT_CHECK_PACKAGE([LIBNOTIFY], [libnotify], [0.7.0])
+
+dnl ***********************************
+dnl *** Check for debugging support ***
+dnl ***********************************
+XDT_FEATURE_DEBUG()
+
+dnl *********************************
+dnl *** Substitute platform flags ***
+dnl *********************************
+AC_MSG_CHECKING([PLATFORM_CPPFLAGS])
+AC_MSG_RESULT([$PLATFORM_CPPFLAGS])
+AC_SUBST([PLATFORM_CPPFLAGS])
+AC_MSG_CHECKING([PLATFORM_CFLAGS])
+AC_MSG_RESULT([$PLATFORM_CFLAGS])
+AC_SUBST([PLATFORM_CFLAGS])
+AC_MSG_CHECKING([PLATFORM_LDFLAGS])
+AC_MSG_RESULT([$PLATFORM_LDFLAGS])
+AC_SUBST([PLATFORM_LDFLAGS])
+
+AC_OUTPUT([
+Makefile
+src/Makefile
+po/Makefile.in
+])
