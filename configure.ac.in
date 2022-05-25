@@ -75,5 +75,5 @@ AC_SUBST([PLATFORM_LDFLAGS])
 AC_OUTPUT([
 Makefile
 src/Makefile
-po/Makefile
+po/Makefile.in
 ])
