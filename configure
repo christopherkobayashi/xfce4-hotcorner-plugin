@@ -16288,9 +16288,9 @@ fi
 
 
 
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for libnotify >= " >&5
-printf %s "checking for libnotify >= ... " >&6; }
-  if $PKG_CONFIG "--atleast-version=" "libnotify" >/dev/null 2>&1; then
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for libnotify >= 0.7.0" >&5
+printf %s "checking for libnotify >= 0.7.0... " >&6; }
+  if $PKG_CONFIG "--atleast-version=0.7.0" "libnotify" >/dev/null 2>&1; then
     LIBNOTIFY_VERSION=`$PKG_CONFIG --modversion "libnotify"`
     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBNOTIFY_VERSION" >&5
 printf "%s\n" "$LIBNOTIFY_VERSION" >&6; }
@@ -16307,7 +16307,7 @@ printf %s "checking LIBNOTIFY_LIBS... " >&6; }
     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBNOTIFY_LIBS" >&5
 printf "%s\n" "$LIBNOTIFY_LIBS" >&6; }
 
-    LIBNOTIFY_REQUIRED_VERSION=
+    LIBNOTIFY_REQUIRED_VERSION=0.7.0
 
 
 
@@ -16323,7 +16323,7 @@ printf "%s\n" "found, but $xdt_cv_version" >&6; }
 
       echo "*** The required package libnotify was found on your system,"
       echo "*** but the installed version ($xdt_cv_version) is too old."
-      echo "*** Please upgrade libnotify to atleast version , or adjust"
+      echo "*** Please upgrade libnotify to atleast version 0.7.0, or adjust"
       echo "*** the PKG_CONFIG_PATH environment variable if you installed"
       echo "*** the new version of the package in a nonstandard prefix so"
       echo "*** pkg-config is able to find it."
@@ -16335,7 +16335,7 @@ printf "%s\n" "not found" >&6; }
 
 
       echo "*** The required package libnotify was not found on your system."
-      echo "*** Please install libnotify (atleast version ) or adjust"
+      echo "*** Please install libnotify (atleast version 0.7.0) or adjust"
       echo "*** the PKG_CONFIG_PATH environment variable if you"
       echo "*** installed the package in a nonstandard prefix so that"
       echo "*** pkg-config is able to find it."
@@ -16458,7 +16458,7 @@ printf %s "checking PLATFORM_LDFLAGS... " >&6; }
 printf "%s\n" "$PLATFORM_LDFLAGS" >&6; }
 
 
-ac_config_files="$ac_config_files Makefile src/Makefile po/Makefile.in"
+ac_config_files="$ac_config_files Makefile src/Makefile po/Makefile"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -17479,7 +17479,7 @@ do
     "default-1") CONFIG_COMMANDS="$CONFIG_COMMANDS default-1" ;;
     "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;
     "src/Makefile") CONFIG_FILES="$CONFIG_FILES src/Makefile" ;;
-    "po/Makefile.in") CONFIG_FILES="$CONFIG_FILES po/Makefile.in" ;;
+    "po/Makefile") CONFIG_FILES="$CONFIG_FILES po/Makefile" ;;
     "po/stamp-it") CONFIG_COMMANDS="$CONFIG_COMMANDS po/stamp-it" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
