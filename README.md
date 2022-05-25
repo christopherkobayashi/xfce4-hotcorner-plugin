@@ -32,6 +32,7 @@ make && make install
 
 ## Credits
 xfce4-hotcorner-plugin was originally written by Brian Hsu (<brianhsu.hsu@gmail.com>)
+
 It is currently maintained by Christopher Kobayashi (<software+github@disavowed.jp>)
 
 ## License
