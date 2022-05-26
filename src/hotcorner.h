@@ -25,7 +25,7 @@
 #include <libwnck/libwnck.h>
 
 #define UPDATE_TIMEOUT 50
-#define HOTCORNER_ICON_NAME "org.xfce.settings.display"
+#define HOTCORNER_ICON_NAME "video-display"
 
 typedef struct HotCorner HotCorner;
 typedef void (* ActionCallback)(int, HotCorner *);
