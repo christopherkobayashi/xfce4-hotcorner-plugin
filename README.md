@@ -29,7 +29,8 @@ The HotCorner panel plugin supports the following operations on the primary disp
 ./configure --prefix=/usr
 make && make install
 ```
-
+## Distro packages
+- Arch Linux ([AUR](https://aur.archlinux.org/packages/xfce4-hotcorner-plugin)): `yay -S xfce4-hotcorner-plugin`
 ## Credits
 xfce4-hotcorner-plugin was originally written by Brian Hsu (<brianhsu.hsu@gmail.com>)
 
