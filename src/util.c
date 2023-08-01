@@ -48,7 +48,7 @@ void toggle_desktop(int spot __attribute__((unused)),
 		    HotCorner * hotCorner __attribute__((unused)))
 {
 	WnckHandle *wnckHandle = wnck_handle_new(WNCK_CLIENT_TYPE_PAGER);
-	WnckScreen *wnck = wnck_handle_get_default_screen(wnckHandle); //wnck_screen_get_default()
+	WnckScreen *wnck = wnck_handle_get_default_screen(wnckHandle);
 	gboolean is_showing = wnck_screen_get_showing_desktop(wnck);
 
 	wnck_screen_toggle_showing_desktop(wnck, !is_showing);
