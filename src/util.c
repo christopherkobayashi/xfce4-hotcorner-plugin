@@ -16,7 +16,7 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#include<libnotify/notify.h>
+#include <libnotify/notify.h>
 
 #include <libwnck/libwnck.h>
 #include "util.h"
@@ -47,7 +47,8 @@ gboolean is_lower_left(GdkRectangle monitorInfo, gint x, gint y)
 void toggle_desktop(int spot __attribute__((unused)),
 		    HotCorner * hotCorner __attribute__((unused)))
 {
-	WnckScreen *wnck = wnck_screen_get_default();
+	WnckHandle *wnckHandle = wnck_handle_new(WNCK_CLIENT_TYPE_PAGER);
+	WnckScreen *wnck = wnck_handle_get_default_screen(wnckHandle); //wnck_screen_get_default()
 	gboolean is_showing = wnck_screen_get_showing_desktop(wnck);
 
 	wnck_screen_toggle_showing_desktop(wnck, !is_showing);
