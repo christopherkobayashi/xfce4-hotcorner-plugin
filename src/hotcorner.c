@@ -226,9 +226,10 @@ static gint check_hot_corner_action(HotCorner * hotCorner)
 	gdk_device_get_position(device, NULL, &x, &y);
 
 	if (hotCorner->disableWhenFullScreen) {
-		WnckScreen *wnckScreen = wnck_screen_get_default();
-		WnckWindow *activeWindow =
-		    wnck_screen_get_active_window(wnckScreen);
+		//TODO Fix full-screen checkmark
+		WnckHandle *wnckHandle = wnck_handle_new(WNCK_CLIENT_TYPE_APPLICATION);
+		WnckScreen *wnckScreen = wnck_handle_get_default_screen(wnckHandle);
+		WnckWindow *activeWindow = wnck_screen_get_active_window(wnckScreen);
 		if (wnck_window_is_fullscreen(activeWindow)) {
 			return TRUE;
 		}
@@ -282,10 +283,18 @@ static void start_polling_mouse_position(HotCorner * hotCorner)
 
 static HotCorner *hotCorner_new(XfcePanelPlugin * plugin)
 {
-	HotCorner *hotCorner = g_new0(HotCorner, 1);
+	GtkWidget *gtkImage = gtk_image_new();
+	xfce_panel_set_image_from_source(
+		(GtkImage *)gtkImage,
+		HOTCORNER_ICON_NAME,
+		NULL,
+		xfce_panel_plugin_get_icon_size(plugin),
+		gtk_widget_get_scale_factor(GTK_WIDGET (plugin)));
+
+	HotCorner *hotCorner;
+	hotCorner = g_new0(HotCorner, 1);
 	hotCorner->plugin = plugin;
-	hotCorner->icon =
-	    xfce_panel_image_new_from_source(HOTCORNER_ICON_NAME);
+	hotCorner->icon = gtkImage;
 	hotCorner->disableWhenFullScreen = TRUE;
 	hotCorner->upperLeftCallback = NULL;
 	hotCorner->lowerLeftCallback = NULL;
@@ -508,11 +517,12 @@ static void on_open_configure_window(XfcePanelPlugin * plugin,
 
 	xfce_panel_plugin_block_menu(plugin);
 	GtkWidget *dialog =
-	    xfce_titled_dialog_new_with_buttons(_("HotCorner"),
+		xfce_titled_dialog_new_with_mixed_buttons(_("HotCorner"),
 			GTK_WINDOW
 			(gtk_widget_get_toplevel
 				 (GTK_WIDGET (hotCorner->plugin))),
 			GTK_DIALOG_DESTROY_WITH_PARENT,
+			_("Close"),
 			_("Close"),
 			GTK_RESPONSE_OK, NULL);
 
